@@ -1,0 +1,99 @@
+.nav_left{
+	margin-top : 30px;
+}
+
+.left_menubar{
+	color: #fafafa;
+}
+
+
+
+.myMenu01 {
+	list-style : none;
+	padding-left: 0px;
+}
+
+.myPage01 .myMenu01 li{
+	padding-bottom : 20px;
+	font-size : 18px;
+}
+
+.myPage01 .myMenu01 a{
+	color: #fafafa;
+	
+}
+
+.myMenu02 {
+	list-style : none;
+	padding-left: 0px;
+}
+
+.myPage02 .myMenu02 li{
+	padding-bottom : 20px;
+	font-size : 18px;
+}
+
+.myPage02 .myMenu02 a{
+	color: #fafafa;
+	
+}
+
+.myMenu03 {
+	list-style : none;
+	padding-left: 0px;
+}
+
+.myPage03 .myMenu03 li{
+	padding-bottom : 20px;
+	font-size : 18px;
+}
+
+.myPage03 .myMenu03 a{
+	color: #8972ee;
+	
+}
+
+.myMenu04 {
+	list-style : none;
+	padding-left: 0px;
+}
+
+.myPage04 .myMenu04 li{
+	padding-bottom : 20px;
+	font-size : 18px;
+}
+
+.myPage04 .myMenu04 a{
+	color: red;
+	
+}
+
+
+.profile-user-img {
+	padding: 3px;
+	width: 100px;
+	position: left;
+	/* border: 4px solid #f44336; */
+}
+
+.update_btn{
+	position : right;
+}
+
+.up-btn {
+	font-size: 15px;
+	color: #fafafa;
+	background: blue;
+	border: none;
+	border-radius: 2px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 10px 20px;
+	float: left;
+}
+
+.profile-username {
+  font-size: 21px;
+  margin-top: 5px;
+}

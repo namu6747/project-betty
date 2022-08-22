@@ -19,7 +19,6 @@ public class FreeBoard {
 	private final String content;
 	private final Timestamp regdate;
 	private final int viewcnt;
-	private final char showboard;
-	
+	private final String showboard;
 	
 }

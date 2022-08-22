@@ -16,17 +16,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	// 홈 화면
 	@GetMapping
-	public String home() {
+	public String home(Locale locale, Model model) {
+
 		return "home";
+	}
+	
+	@GetMapping("library")
+	public String welcome() {
+		return "library/library-welcome";
 	}
 	
 	@GetMapping("offline")
 	public String offline() {
-		return "offline";
+		return "offline/offline";
 	}
 	
 	

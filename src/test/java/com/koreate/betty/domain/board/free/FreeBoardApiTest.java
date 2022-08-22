@@ -23,6 +23,7 @@ import com.koreate.betty.global.config.AppConfig;
 import com.koreate.betty.global.config.RootConfig;
 import com.koreate.betty.global.config.WebConfig;
 
+import junit.framework.Assert;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -80,7 +81,7 @@ public class FreeBoardApiTest {
 		
 		String formToJson = objectMapper.writeValueAsString(form1);
 		log.info("json = {}",formToJson);
-		
+
 	}
 	
 	@Test
