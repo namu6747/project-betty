@@ -52,7 +52,7 @@ public class BookRepoTest {
 		log.info("result : " + result);
 	}
 	
-	@Test
+	// @Test
 	public void joinTest() { // 테스트 완료 (jbooksList)
 		List<Book> list = bs.jBooksList();
 		log.info("size : " + list.size());
@@ -63,15 +63,9 @@ public class BookRepoTest {
 	}
 	
 	
-	@Test
+	// @Test
 	public void jBooksSearchTest() {
 		
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

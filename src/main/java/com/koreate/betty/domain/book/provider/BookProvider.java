@@ -12,7 +12,7 @@ public class BookProvider {
 	// 신규 도서 등록
 	public String register(Book book) {
 		return new SQL().INSERT_INTO(BOOK_TBL)
-				.INTO_VALUES("#{code}, #{title}, #{auth}, #{pub}, #{pub_date}, #{page}, #{genre}, #{img}, #{intro}")
+				.INTO_VALUES("#{code}, #{title}, #{auth}, #{pub}, #{pubDate}, #{page}, #{genre}, #{img}, #{intro}")
 				.toString();
 	}
 	
@@ -94,57 +94,60 @@ public class BookProvider {
 				.toString();
 	}
 		
-	// 도서 검색(code) -> (같은 이름의 책이 여러개 나올 수 있음)
-	public String jBooksSearchByCode(String code) {
-		return new SQL().SELECT("*")
-				.FROM(BOOK_TBL)
-				.JOIN(BOOK_SINGLE_TBL)
-				.WHERE("code LIKE '%#{code}%'")
-				.WHERE("code = book_code")
-				.ORDER_BY("code")
-				.ORDER_BY("num")
-				.toString();
-	}
+//	// 도서 검색(code) -> (같은 이름의 책이 여러개 나올 수 있음)
+//	public String jBooksSearchByCode(String code) {
+//		return new SQL().SELECT("*")
+//				.FROM(BOOK_TBL)
+//				.JOIN(BOOK_SINGLE_TBL)
+//				.WHERE("code LIKE '%#{code}%'")
+//				.WHERE("code = book_code")
+//				.ORDER_BY("code")
+//				.ORDER_BY("num")
+//				.toString();
+//	}
 	
 	// 도서 검색(title)
-	public String jBooksSearchByType(String data, String type) {
+	public String jBooksSearchByType(Book book) { // form이 나와야 빠르게 처리함
 		SQL sql = new SQL();
-			
+		
 		sql.SELECT("*").FROM(BOOK_TBL).JOIN(BOOK_SINGLE_TBL);
-		// c, 
-		if (type.contains("")) {
-			
-		}
 		
-		if (type == "") {
-			
+		if (book.getTitle() != null) {
+			// 이런식으로 분기 지정
+			// 여차하면 매개변수로 form을 받음
 		}
-		
-//		.WHERE("code LIKE '%#{code}%'")
-//		.WHERE("code = book_code")
-//		.ORDER_BY("code")
-//		.ORDER_BY("num");
+
 		return ""; 
 	}
 	
 	
-	// 도서 정보 검색(auth)
-	public String jBooksSearchByAuth(String auth) {
+//	// 도서 정보 검색(auth)
+//	public String jBooksSearchByAuth(String auth) {
+//		return new SQL().SELECT("*")
+//				.FROM(BOOK_TBL)
+//				.WHERE("auth LIKE '%#{auth}%'")
+//				.ORDER_BY("code")
+//				.toString();
+//	}
+//	
+//	
+//	// 도서 정보 검색(genre)
+//	public String jBooksSearchByGenre(String genre) {
+//		return new SQL().SELECT("*")
+//				.FROM(BOOK_TBL)
+//				.WHERE("genre LIKE '%#{genre}%'")
+//				.ORDER_BY("code")
+//				.toString();
+//	}
+	
+	
+	// 대여, 예약된 책 목록 검색		// 반드시 변수 값은 y, n으로 지정
+	public String jBooksRentalList(String yes) {
 		return new SQL().SELECT("*")
 				.FROM(BOOK_TBL)
-				.WHERE("auth LIKE '%#{auth}%'")
-				.ORDER_BY("code")
+				.JOIN(BOOK_SINGLE_TBL)
+				.WHERE("code = book_code")
+				.WHERE("rental = "+ yes)
 				.toString();
-	}
-	
-	// 도서 정보 검색(genre)
-	public String jBooksSearchByGenre(String genre) {
-		return new SQL().SELECT("*")
-				.FROM(BOOK_TBL)
-				.WHERE("genre LIKE '%#{genre}%'")
-				.ORDER_BY("code")
-				.toString();
-	}
-	
-	
+	}	
 }

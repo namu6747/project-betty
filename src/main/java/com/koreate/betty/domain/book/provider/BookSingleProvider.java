@@ -25,5 +25,8 @@ public class BookSingleProvider {
 	
 	// 해당 도서 1권 정보
 	
-//	public String book
+	public String oneBook(String ISBN, int num) { // book_single 객체를 넘겨받거나, form 형태를 받음
+		
+		return "";
+	}
 }
