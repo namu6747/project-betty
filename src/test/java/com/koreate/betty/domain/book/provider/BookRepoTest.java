@@ -3,13 +3,13 @@ package com.koreate.betty.domain.book.provider;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.koreate.betty.domain.book.dto.BookSearchForm;
 import com.koreate.betty.domain.book.dto.BookUpdateForm;
 import com.koreate.betty.domain.book.service.BookService;
 import com.koreate.betty.domain.book.vo.Book;
@@ -65,6 +65,23 @@ public class BookRepoTest {
 	
 	// @Test
 	public void jBooksSearchTest() {
+		String searchText = "마술";
+		String searchOption = "title";
+		
+		String rentOption = "all";
+		
+		Timestamp pubDate = Timestamp.valueOf("2015-01-01");
+		String pubDateOption = "after";
+		
+		String genre = null;
+		
+		BookSearchForm bsf = new BookSearchForm();
+		bsf.setSearchText(searchText);
+		bsf.setSearchOption(searchOption);
+		bsf.setRentOption(rentOption);
+		bsf.setPubDate(pubDate);
+		bsf.setPubDateOption(pubDateOption);
+		bsf.setGenre(genre);
 		
 	}
 

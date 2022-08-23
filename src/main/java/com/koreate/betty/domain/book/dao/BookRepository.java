@@ -18,5 +18,8 @@ public interface BookRepository {
 
 	@SelectProvider(type=BookProvider.class, method="jBooksList")
 	public List<Book> jBooksList();
-		
+
+	@SelectProvider(type=BookProvider.class, method="jBooksSearch")
+	public List<Book> jBooksSearch();
+	
 }
