@@ -40,12 +40,6 @@ public class FreeCommentService {
 		return dao.removeComment(cno);	
 	}
 	
-	// 오리진 업데이트
-	/*
-	public int updateOrigin() {
-		return dao.updateOrigin();
-	}*/
-	
 	// 댓글 목록 출력
 	public List<FreeBoardComment> list(Criteria cri, int bno){
 		return dao.commentList(cri, bno);

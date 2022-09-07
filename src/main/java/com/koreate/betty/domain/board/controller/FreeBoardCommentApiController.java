@@ -44,9 +44,7 @@ public class FreeBoardCommentApiController {
 	
 	@PostMapping("boards/free/{bno}/comments")
 	public String commentAdd(FreeBoardCommentForm form) {
-		System.out.println("ㅎㅇ");
 		int add = freeCommentService.add(form, form.getFreeBno());
-		
 		return add == 1 ? "성공" : "실패";
 	}
 	
