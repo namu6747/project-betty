@@ -19,7 +19,6 @@
 		$(elP).html(`<sapn style='margin-left:5px;font-size:12px;${isCheck ? 'color:green;' : 'color:red;'}'>${messageP}</span>`);
 	}
 	
-	
 	$("#birth").datepicker({
 	    dateFormat: 'yy-mm-dd' //달력 날짜 형태
 	    ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시

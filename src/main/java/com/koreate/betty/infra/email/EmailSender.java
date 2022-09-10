@@ -31,7 +31,7 @@ public class EmailSender {
 			helper.setFrom(adminEmail);
 			helper.setTo(email);
 			helper.setSubject("이메일 인증 코드 확인");
-			helper.setText("인증 번호 [" + code + "]", true);
+			helper.setText("Betty 이메일 인증 코드 [ " + code + " ]", true);
 			System.out.println("이메일 인증 코드" + code);
 			mailSender.send(mesage);
 		} catch (MessagingException e) {
