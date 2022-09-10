@@ -27,8 +27,8 @@ public class SMSSender {
 		System.out.println(adminPhone);
 		Message message = new Message();
 		message.setFrom(adminPhone);
-		message.setTo("01000000000");
-		message.setText("테스트 전송 메세지 입니다.해당 인증번호는[" + code + "]입니다.");
+		message.setTo(phone);
+		message.setText("Betty 문자 인증 코드입니다. [ " + code + " ]");
 		System.out.println("메시지 인증 코드" + code);
 		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
 		Map<String, String> map = new HashMap<>();

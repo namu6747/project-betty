@@ -158,6 +158,8 @@ $(function(){
 		
 		if(boolPhone){
 			$("#sendSMS").attr("disabled", false);
+		} else {
+			$("#sendSMS").attr("disabled", true);
 		}
 	});
 	
@@ -167,7 +169,7 @@ $(function(){
 			$("#phone").focus();
 		}else{
 			$("#sendSMS").attr("disabled", true);
-			$("#codeWrap").show();
+			$("#phone").attr("readonly", true);
 			$.ajax({
 				type : "get",
 				url : "${path}/sign/up/sms",
@@ -197,10 +199,17 @@ $(function(){
 			url: '${path}/sign/up/sms',
 			data: { "code" : $(".phone-code").val() },
 			success: function(result){
+				if(result == 1){
 					alert("인증 성공 " + result);
 					$("#codeWrap").hide();
 					boolSMS = true;
 					$(".phone-code").val("");
+				} else {
+					alert("인증 실패 " + result);
+					boolSMS = false;
+					$(".phone-code").val("");
+				}
+					
 			},
 			error: function(error){
 				alert("인증 실패 ");
@@ -221,6 +230,8 @@ $(function(){
 		
 		if(boolEmail){
 			$("#sendEmail").attr("disabled", false);
+		} else {
+			$("#sendEmail").attr("disabled", true);
 		}
 	});
 	
@@ -231,6 +242,7 @@ $(function(){
 			$("#email").focus();
 		}else{
 			$("#sendEmail").attr("disabled", true);
+			$("#email").attr("readonly", true);
 			let userEmail = $("#email").val();
 			$.ajax({
 				type : "GET",
@@ -264,10 +276,18 @@ $(function(){
 			data: { "code" : $(".email-code").val() },
 			success: function(result){
 				console.log(result);
+				if(result == 1){
 					alert("이메일인증 성공 " + result);
 					$("#emailCodeWrap").hide();
 					boolEmailCode = true;
 					$(".email-code").val("");
+				} else {
+					alert("이메일인증 실패 " + result);
+					boolEmailCode = false;
+					$(".email-code").val("");
+				}
+				
+					
 			},
 			error: function(err){
 				console.log(err)
@@ -280,6 +300,20 @@ $(function(){
 	
 	$.validator.addMethod("regex",function(value,element,regexpr){
 		return regexpr.test(value);
+	});
+	
+	$.validator.setDefaults({
+		submitHandler : function(form){
+			if(!boolSMS){
+				alert("핸드폰 인증코드 확인 해주세요.");
+				return false;
+			}else if(!boolEmailCode){
+				alert("이메일 인증코드 확인 해주세요.");
+				return false;
+			}else{
+				return true;
+			}
+		}
 	});
 	
 	
@@ -393,18 +427,6 @@ $(function(){
 			}
 		}
 	}); 
-	
-	$.validator.setDefaults({
-		submitHandler : function(){
-			if(!boolSMS){
-				alert("핸드폰 인증코드 확인 해주세요.");
-			}else if(!boolEmailCode){
-				alert("이메일 인증코드 확인 해주세요.");
-			}else{
-				$("#signUpForm").submit();
-			}
-		}
-	});
 	
 });
 </script>

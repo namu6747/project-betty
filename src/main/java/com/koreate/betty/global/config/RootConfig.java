@@ -1,26 +1,33 @@
 package com.koreate.betty.global.config;
 
-import java.util.Locale;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
+@Slf4j
 @Configuration
 @Import(DBConfig.class)
 @EnableTransactionManagement
+@PropertySource("classpath:/sms.properties")
 public class RootConfig {
+	
+	@Value("${sms.api.key}")
+	String apiKey;
+	@Value("${sms.api.secret}")
+	String apiSecret;
+	@Value("${sms.url}")
+	String smsUrl;
 
 	@Bean
 	public MessageSource messageSource() {
@@ -45,8 +52,8 @@ public class RootConfig {
 
 	@Bean
 	public DefaultMessageService defaultMessageService() {
-		return NurigoApp.INSTANCE.initialize("NCSIA5IIYYBCCHTZ", "YHERRFBC76LCQGTRG6ZYHG6QHEPBIP54",
-				"https://api.coolsms.co.kr");
+		log.info("key = {}, secret = {}, url = {}", apiKey, apiSecret, smsUrl);
+		return NurigoApp.INSTANCE.initialize(apiKey, apiSecret, smsUrl);
 	}
 
 }

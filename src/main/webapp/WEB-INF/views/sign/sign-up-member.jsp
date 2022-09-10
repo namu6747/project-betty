@@ -199,10 +199,17 @@ $(function(){
 			url: '${path}/sign/up/sms',
 			data: { "code" : $(".phone-code").val() },
 			success: function(result){
+				if(result == 1){
 					alert("인증 성공 " + result);
 					$("#codeWrap").hide();
 					boolSMS = true;
 					$(".phone-code").val("");
+				} else {
+					alert("인증 실패 " + result);
+					boolSMS = false;
+					$(".phone-code").val("");
+				}
+					
 			},
 			error: function(error){
 				alert("인증 실패 ");
@@ -269,10 +276,18 @@ $(function(){
 			data: { "code" : $(".email-code").val() },
 			success: function(result){
 				console.log(result);
+				if(result == 1){
 					alert("이메일인증 성공 " + result);
 					$("#emailCodeWrap").hide();
 					boolEmailCode = true;
 					$(".email-code").val("");
+				} else {
+					alert("이메일인증 실패 " + result);
+					boolEmailCode = false;
+					$(".email-code").val("");
+				}
+				
+					
 			},
 			error: function(err){
 				console.log(err)
@@ -287,6 +302,19 @@ $(function(){
 		return regexpr.test(value);
 	});
 	
+	$.validator.setDefaults({
+		submitHandler : function(form){
+			if(!boolSMS){
+				alert("핸드폰 인증코드 확인 해주세요.");
+				return false;
+			}else if(!boolEmailCode){
+				alert("이메일 인증코드 확인 해주세요.");
+				return false;
+			}else{
+				return true;
+			}
+		}
+	});
 	
 	$("#signUpForm").validate({
 		onkeyup : function(el){
@@ -323,7 +351,6 @@ $(function(){
 			    },
 			    rangelength : [2,10]
 			},
-//			birth : { required : true },
 			gender : { required : true },
 			addr : { required : true },
 			phone : { 
@@ -372,11 +399,6 @@ $(function(){
 				remote : "이미 존재하는 닉네임 입니다.",
 				rangelength : "닉네임은 2~10글자 이내로 작성하세요."
 			},
-			/* 
-			birth : {
-				required : "생년월일을 선택하세요."
-			},  */
-			
 			gender : { required : "성별을 확인하세요." },
 			addr : { required : "주소를 입력하세요." },
 			phone : { 
@@ -403,18 +425,5 @@ $(function(){
 			}
 		}
 	}); 
-	
-	$.validator.setDefaults({
-		submitHandler : function(){
-			if(!boolSMS){
-				alert("핸드폰 인증코드 확인 해주세요.");
-			}else if(!boolEmailCode){
-				alert("이메일 인증코드 확인 해주세요.");
-			}else{
-				$("#signUpForm").submit();
-			}
-		}
-	});
-	
 });
 </script>
