@@ -88,20 +88,19 @@ public class MemberApiController {
 	public int pointAdd(
 			@PathVariable("id") String userId,
 			@RequestBody Map<String,Object> map) {
-		log.info("-- userId : {} ", userId);
-		log.info("-- point : {} ", map.get("point").toString());
 		PointForm form = new PointForm();
 		form.setId(userId);
 		Integer point = Integer.parseInt((String)map.get("point"));
 		form.setPoint(point);
 		memberService.addPoint(form);
-		
+		log.info("{}님이 {}원 입금하였습니다.",userId,map.get("point").toString());
 		return memberService.findPointById(userId);
 	}
 	
 	@PostMapping("grade/update")
 	public int gradeUpdate(@User Member user, String grade) {
 		memberService.updateMembership(user.getId(), grade);
+		log.info("{}님이 {}등급으로 변경하였습니다.",user.getId(),grade);
 		return 1;
 	}
 

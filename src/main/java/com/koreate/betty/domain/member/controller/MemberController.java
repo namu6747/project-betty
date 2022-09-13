@@ -77,7 +77,7 @@ public class MemberController {
 
 	@PostMapping("membership")
 	public String registerMembership(@PathVariable String memberId, String id, String membershipGrade) {
-		int result = memberService.updateMembership(id, membershipGrade);
+		memberService.updateMembership(id, membershipGrade);
 		return "redirect:/members/" + memberId;
 	}
 	

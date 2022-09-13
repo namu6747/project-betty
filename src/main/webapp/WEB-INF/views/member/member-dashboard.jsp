@@ -42,7 +42,7 @@ table td {
 											alt="...">
 									</div>
 									<div>
-										<button class="btn btn-danger" onclick="location.href='${path}/members/num'">회원상세</button>
+										<button class="btn btn-danger" onclick="location.href='${path}/members/${user.id}'">회원상세</button>
 										<div class="row justify-content-center align-items-center h-100">
 											${memberCard.premiumGrade}
 										</div>

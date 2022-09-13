@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koreate.betty.domain.member.dao.MemberCardRepository;
@@ -19,6 +20,7 @@ import com.koreate.betty.domain.member.vo.ChkLog;
 import com.koreate.betty.domain.member.vo.Inquiry;
 import com.koreate.betty.domain.member.vo.Member;
 import com.koreate.betty.domain.member.vo.MemberCard;
+import com.koreate.betty.domain.model.GradeConst;
 import com.koreate.betty.global.error.exception.NotFoundIdException;
 import com.koreate.betty.infra.email.EmailSender;
 
@@ -140,8 +142,15 @@ public class MemberService {
 		return uploaded;
 	}
 
-	public int updateMembership(String id, String membershipGrade) {
-		return memberCardRepository.updateGrade(id, membershipGrade);
+	@Transactional
+	public void updateMembership(String id, String membershipGrade) {
+		
+		if(membershipGrade.equals(GradeConst.SILVER)) {
+			memberCardRepository.decreasePoint(id, 50000);
+		} else if(membershipGrade.equals(GradeConst.VIP)) {
+			memberCardRepository.decreasePoint(id, 150000);
+		}
+		memberCardRepository.updateGrade(id, membershipGrade);
 	}
 
 	public MemberCard findGradeById(String id) {

@@ -24,9 +24,10 @@ public class AuthInterceptor implements HandlerInterceptor{
 		String path = request.getServletContext().getContextPath();
 		HttpSession session = request.getSession(false);
 		Member user = (Member)session.getAttribute(SessionConst.USER);
-		
+		String ip = request.getRemoteAddr();
 		
 		if(session == null || user == null) {
+			log.info("접근 차단 ip = {}",ip);
 			response.sendRedirect(path+"/sign/in?redirectURL="+uri);
 			return false;
 		}
@@ -47,6 +48,7 @@ public class AuthInterceptor implements HandlerInterceptor{
 			String pathVariable = uri.split("/")[3];
 			if(!user.getId().equals(pathVariable)) {
 				request.setAttribute("message", "요청 실패");
+				log.info("접근 차단 id = {}, ip = {}",user.getId(),ip);
 				response.sendRedirect(path);
 				return false;
 			}
@@ -54,18 +56,22 @@ public class AuthInterceptor implements HandlerInterceptor{
 		
 		if(memberPath && !isMember) {
 			request.setAttribute("message", "일반회원만 접근할 수 있습니다.");
+			log.info("접근 차단 id = {}, ip = {}",user.getId(),ip);
 			response.sendRedirect(path);
 			return false;
 		} else if (staffPath && !isStaff) {
 			request.setAttribute("message", "직원회원만 접근할 수 있습니다.");
+			log.info("접근 차단 id = {}, ip = {}",user.getId(),ip);
 			response.sendRedirect(path);
 			return false;
 		} else if(offlinePath && !isMember) {
 			request.setAttribute("message", "일반회원만 접근할 수 있습니다.");
+			log.info("접근 차단 id = {}, ip = {}",user.getId(),ip);
 			response.sendRedirect(path);
 			return false;
 		} else if(adminPath && !isAdmin) {
 			request.setAttribute("message", "관리자만 접근할 수 있습니다.");
+			log.info("접근 차단 id = {}, ip = {}",user.getId(),ip);
 			response.sendRedirect(path);
 			return false;
 		}
@@ -74,6 +80,4 @@ public class AuthInterceptor implements HandlerInterceptor{
 		return true;
 	}
 
-	
-	
 }
