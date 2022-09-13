@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 
-//@Component
-//@Aspect
+@Component
+@Aspect
 @Slf4j
 public class LogAOP {
 
@@ -29,7 +29,7 @@ public class LogAOP {
 			e.printStackTrace();
 		} finally {
 			log.info("return = {}", o);
-			log.info("================aop send ==============");
+			log.info("================aop end ==============");
 		}
 
 		return o;

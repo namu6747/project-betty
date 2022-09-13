@@ -51,6 +51,7 @@ public class SignController {
 		int result = signService.signUp(form);
 		String message = result != 0 ? "회원가입 완료" : "회원가입 실패";
 		rttr.addFlashAttribute("message", message);
+		log.info("신규 회원가입 id = {}",form.getId());
 		return "redirect:/sign/in";
 	}
 

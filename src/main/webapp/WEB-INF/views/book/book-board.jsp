@@ -32,34 +32,34 @@
 			<div class="col-md-10">
 			<div class="btn-group btn-group-toggle mb-5" data-toggle="buttons">
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value=""> 전체
+			    <input type="radio" name="genre" value=""> <s:message code="text.all"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="100"> 철학
+			    <input type="radio" name="genre" value="100"> <s:message code="genre.100"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="200"> 종교
+			    <input type="radio" name="genre" value="200"> <s:message code="genre.200"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="300"> 사회
+			    <input type="radio" name="genre" value="300"> <s:message code="genre.300"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="400"> 과학
+			    <input type="radio" name="genre" value="400"> <s:message code="genre.400"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="500"> 공학
+			    <input type="radio" name="genre" value="500"> <s:message code="genre.500"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="600"> 예술
+			    <input type="radio" name="genre" value="600"> <s:message code="genre.600"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="700"> 외국어
+			    <input type="radio" name="genre" value="700"> <s:message code="genre.700"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="800"> 소설
+			    <input type="radio" name="genre" value="800"> <s:message code="genre.800"/>
 			  </label>
 			  <label class="btn btn-secondary">
-			    <input type="radio" name="genre" value="900"> 역사
+			    <input type="radio" name="genre" value="900"> <s:message code="genre.900"/>
 			  </label>
 			</div>
 			

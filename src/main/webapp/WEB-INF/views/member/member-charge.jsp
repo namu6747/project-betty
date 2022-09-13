@@ -172,7 +172,6 @@ $.ajax({
 		contentType: 'application/json',
 		dataType: 'json',
 		success: function(result){
-			alert("성공");
 			$('#myPoint').val(result);
 			$('#chargeAmount').val("");
 		}

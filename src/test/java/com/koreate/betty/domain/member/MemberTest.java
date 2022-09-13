@@ -178,8 +178,8 @@ public class MemberTest {
 		String id = "1224";
 		String grade = "bronze";
 		
-		int result = memberService.updateMembership(id, grade);
-		log.info("\n\n\n\n result : {}", result);
+		//int result = memberService.updateMembership(id, grade);
+		//log.info("\n\n\n\n result : {}", result);
 	}
 	
 	@Test

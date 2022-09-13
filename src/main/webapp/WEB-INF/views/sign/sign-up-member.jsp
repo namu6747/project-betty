@@ -170,11 +170,12 @@ $(function(){
 		}else{
 			$("#sendSMS").attr("disabled", true);
 			$("#phone").attr("readonly", true);
+			let userPhone = $("#phone").val();
 			$.ajax({
 				type : "get",
 				url : "${path}/sign/up/sms",
 				data :{
-					phone : $("#phone").val()
+					phone : userPhone
 				},
 				beforeSend : function(){
 					$('.custom-Loader').delay(100).fadeIn("slow");
@@ -183,7 +184,7 @@ $(function(){
 				    $(".custom-Loader").delay(100).fadeOut("slow");
 				},
 				success : function(data){
-					alert("전화번호로 인증 코드가 전송되었습니다."  + data);
+					alert(`\${userPhone}로 인증 코드가 전송되었습니다.`);
 					$("#codeWrap").show();
 				},
 				error : function(){
@@ -200,12 +201,12 @@ $(function(){
 			data: { "code" : $(".phone-code").val() },
 			success: function(result){
 				if(result == 1){
-					alert("인증 성공 " + result);
+					alert("인증 성공 ");
 					$("#codeWrap").hide();
 					boolSMS = true;
 					$(".phone-code").val("");
 				} else {
-					alert("인증 실패 " + result);
+					alert("인증 실패 ");
 					boolSMS = false;
 					$(".phone-code").val("");
 				}
@@ -257,7 +258,7 @@ $(function(){
 				    $(".custom-Loader").delay(100).fadeOut("slow");
 				},
 				success : function(data){
-					alert(`\${userEmail}로 인증 코드가 전송되었습니다.` + data);
+					alert(`\${userEmail}로 인증 코드가 전송되었습니다.`);
 					
 					$("#emailCodeWrap").show();
 				},
@@ -277,12 +278,12 @@ $(function(){
 			success: function(result){
 				console.log(result);
 				if(result == 1){
-					alert("이메일인증 성공 " + result);
+					alert("이메일인증 성공");
 					$("#emailCodeWrap").hide();
 					boolEmailCode = true;
 					$(".email-code").val("");
 				} else {
-					alert("이메일인증 실패 " + result);
+					alert("이메일인증 실패");
 					boolEmailCode = false;
 					$(".email-code").val("");
 				}
@@ -352,7 +353,6 @@ $(function(){
 			    rangelength : [2,10]
 			},
 			gender : { required : true },
-			addr : { required : true },
 			phone : { 
 			    required : true,
 			    minlength : 9,
@@ -400,7 +400,6 @@ $(function(){
 				rangelength : "닉네임은 2~10글자 이내로 작성하세요."
 			},
 			gender : { required : "성별을 확인하세요." },
-			addr : { required : "주소를 입력하세요." },
 			phone : { 
 				required : "전화번호를 입력하세요.",
 				minlength : "전화번호를 입력해주세요.",

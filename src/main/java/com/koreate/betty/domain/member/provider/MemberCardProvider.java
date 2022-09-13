@@ -38,6 +38,14 @@ public class MemberCardProvider {
 				.toString();
 	}
 	
+	// 포인트 감소
+	public String decreasePoint(@Param("id")String id, @Param("point")int point) {
+		return new SQL().UPDATE(MEMBER_CARD_TBL)
+				.SET("point = point - #{point}")
+				.WHERE("member_id = #{id}")
+				.toString();
+	}
+	
 	public String updateGrade(@Param("id")String id, @Param("msGrade")String msGrade) {		
 		return new SQL().UPDATE(MEMBER_CARD_TBL)
 				.SET("premium_grade = #{msGrade}")
