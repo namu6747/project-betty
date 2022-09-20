@@ -27,6 +27,8 @@
 - MySql
 - MyBatis
 - HikariCP
+- Notion
+- Github
 
 <br/>
 
