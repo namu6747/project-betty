@@ -1,5 +1,16 @@
 # project-betty
 
+**기능 시연 연상**
+
+[Youtube 에서 보기](https://youtu.be/AFNmRdEg1ck)
+
+
+프로젝트 전체 리뷰는 블로그에서 확인하실 수 있습니다.😄
+
+🌱https://namu6747.github.io/categories/betty/
+
+- - -
+
 한국한국기술교육직업전문학교 최종 프로젝트 / 담당 강사 : **최기근**
 
 이름 : **박재민**
@@ -32,11 +43,4 @@
 
 <br/>
 
-**기능 시연 연상**
 
-[Youtube 에서 보기](https://youtu.be/AFNmRdEg1ck)
-
-
-프로젝트 전체 리뷰는 블로그에서 확인하실 수 있습니다.😄
-
-🌱https://namu6747.github.io/categories/betty/
